@@ -15,7 +15,7 @@ class geoCurrentLocation{
       latitude=position.latitude;
       longtude=position.longitude;
 
-      print(position);
+      //print(position);
     }catch(e){
       print(e);
     }

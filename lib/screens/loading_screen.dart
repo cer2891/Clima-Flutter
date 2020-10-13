@@ -1,4 +1,5 @@
 import 'package:clima/services/location.dart';
+import 'package:clima/services/weather.dart';
 import 'package:flutter/material.dart';
 import 'package:clima/services/networking.dart';
 import 'location_screen.dart';
@@ -22,16 +23,18 @@ class _LoadingScreenState extends State<LoadingScreen> {
 
   void getData() async {
     // String url='http://api.openweathermap.org/data/2.5/weather?lat=$lat&lon=$long&appid=$myKey';
-    geoCurrentLocation location = geoCurrentLocation();
-    await location.getCurrentLocation();
+    // geoCurrentLocation location = geoCurrentLocation();
+    // await location.getCurrentLocation();
+    //
+    // // print(lat);
+    // // print(long);
+    // NetworkHelper networkHelper = NetworkHelper(
+    //     url: 'http://api.openweathermap.org/data/2.5/weather?lat=${location.latitude}&lon=${location.longtude}&appid=$myKey&units=metric');
+    //
+    // var weatherData = await networkHelper.getData();
 
-    // print(lat);
-    // print(long);
-    NetworkHelper networkHelper = NetworkHelper(
-        url: 'http://api.openweathermap.org/data/2.5/weather?lat=${location.latitude}&lon=${location.longtude}&appid=$myKey&units=metric');
-
-    var weatherData = await networkHelper.getData();
-
+    var weatherData= await WeatherModel().getLocationWeather();
+    //print(weatherDataTest);
 
     Navigator.push(context, MaterialPageRoute(builder: (context) {
       return LocationScreen(locationWeather: weatherData,);
